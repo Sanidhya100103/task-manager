@@ -1,0 +1,76 @@
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 64px); /* 64px is the navbar height */
+  background-color: #f5f5f5;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  padding: 16px;
+}
+
+mat-card-header {
+  margin-bottom: 24px;
+}
+
+mat-card-title {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.submit-btn {
+  margin-top: 8px;
+  height: 44px;
+  font-size: 1rem;
+}
+
+.error-message {
+  color: #c62828;
+  font-size: 0.875rem;
+  margin-bottom: 8px;
+}
+
+.footer-text {
+  text-align: center;
+  padding: 16px;
+  color: #666;
+}
+
+.footer-text a {
+  color: #1976d2;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+.logo-section {
+  text-align: center;
+  padding: 24px 24px 8px;
+}
+
+.logo {
+  width: 70px;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+.app-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.app-subtitle {
+  margin-top: 6px;
+  color: #666;
+}

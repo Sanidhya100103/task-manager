@@ -1,0 +1,170 @@
+<div class="tasks-container">
+
+  <!-- Header -->
+  <div class="header-row">
+    <h1>Tasks</h1>
+
+    <button mat-raised-button color="primary" (click)="openAddDialog()">
+      <mat-icon>add</mat-icon>
+      Add Task
+    </button>
+  </div>
+
+  <!-- Filters -->
+  <div class="filters-row">
+
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search by title</mat-label>
+      <input
+        matInput
+        [(ngModel)]="searchTerm"
+        (ngModelChange)="applyFilters()">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Priority</mat-label>
+      <mat-select
+        [(ngModel)]="priorityFilter"
+        (ngModelChange)="applyFilters()">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="Low">Low</mat-option>
+        <mat-option value="Medium">Medium</mat-option>
+        <mat-option value="High">High</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Status</mat-label>
+      <mat-select
+        [(ngModel)]="statusFilter"
+        (ngModelChange)="applyFilters()">
+        <mat-option value="All">All</mat-option>
+        <mat-option value="Pending">Pending</mat-option>
+        <mat-option value="Completed">Completed</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select
+        [(ngModel)]="categoryFilter"
+        (ngModelChange)="applyFilters()">
+        <mat-option value="All">All</mat-option>
+        <mat-option
+          *ngFor="let cat of categories"
+          [value]="cat">
+          {{ cat }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+  </div>
+
+  <!-- Loading Spinner -->
+  <div class="spinner-container" *ngIf="isLoading">
+    <mat-spinner diameter="48"></mat-spinner>
+  </div>
+
+  <!-- Tasks Table -->
+  <table
+    mat-table
+    [dataSource]="tasks"
+    class="mat-elevation-z2 tasks-table"
+    *ngIf="!isLoading">
+
+    <!-- Title -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef>Title</th>
+      <td mat-cell *matCellDef="let task">
+        {{ task.title }}
+      </td>
+    </ng-container>
+
+    <!-- Category -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef>Category</th>
+      <td mat-cell *matCellDef="let task">
+        {{ task.category }}
+      </td>
+    </ng-container>
+
+    <!-- Priority -->
+    <ng-container matColumnDef="priority">
+      <th mat-header-cell *matHeaderCellDef>Priority</th>
+      <td mat-cell *matCellDef="let task">
+        <mat-chip [class]="'priority-' + task.priority.toLowerCase()">
+          {{ task.priority }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Status -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let task">
+        <mat-chip
+          [class]="task.status === 'Completed'
+            ? 'status-completed'
+            : 'status-pending'">
+          {{ task.status }}
+        </mat-chip>
+      </td>
+    </ng-container>
+
+    <!-- Due Date -->
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>Due Date</th>
+      <td mat-cell *matCellDef="let task">
+        {{ task.dueDate | date:'mediumDate' }}
+      </td>
+    </ng-container>
+
+    <!-- Actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+
+      <td mat-cell *matCellDef="let task">
+
+        <button
+          mat-icon-button
+          (click)="openEditDialog(task)"
+          matTooltip="Edit">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          (click)="toggleComplete(task)"
+          [matTooltip]="task.status === 'Completed'
+            ? 'Mark as Pending'
+            : 'Mark as Complete'">
+          <mat-icon>
+            {{ task.status === 'Completed' ? 'undo' : 'check_circle' }}
+          </mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          color="warn"
+          (click)="deleteTask(task.id)"
+          matTooltip="Delete">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+
+  </table>
+
+  <!-- Empty State -->
+  <p
+    *ngIf="!isLoading && tasks.length === 0"
+    class="no-results">
+    No tasks match your filters.
+  </p>
+
+</div>

@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+  <span class="logo">TaskManager</span>
+  <span class="spacer"></span>
+
+  <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+    <mat-icon>dashboard</mat-icon> Dashboard
+  </a>
+  <a mat-button routerLink="/tasks" routerLinkActive="active-link">
+    <mat-icon>checklist</mat-icon> Tasks
+  </a>
+  <a mat-button routerLink="/statistics" routerLinkActive="active-link">
+    <mat-icon>bar_chart</mat-icon> Statistics
+  </a>
+  <a mat-button routerLink="/profile" routerLinkActive="active-link">
+    <mat-icon>person</mat-icon> Profile
+  </a>
+  <a mat-button routerLink="/about" routerLinkActive="active-link">
+    <mat-icon>info</mat-icon> About
+  </a>
+  <button mat-button (click)="logout()">
+  <mat-icon>logout</mat-icon> Logout
+</button>
+</mat-toolbar>

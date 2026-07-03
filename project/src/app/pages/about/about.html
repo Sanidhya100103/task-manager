@@ -1,0 +1,45 @@
+<div class="about-container">
+
+  <!-- Hero Section -->
+  <mat-card class="hero-card">
+    <div class="hero-content">
+      <mat-icon class="hero-icon">task_alt</mat-icon>
+      <h1>Task Manager</h1>
+      <p class="hero-subtitle">
+        A full-stack task management application built with Angular,
+        Node.js, Express, and SQL Server.
+      </p>
+    </div>
+  </mat-card>
+
+  <!-- Features Card -->
+  <mat-card class="info-card">
+    <h2><mat-icon>star</mat-icon> Features</h2>
+    <div class="features-grid">
+      <div class="feature-item" *ngFor="let feature of features">
+        <mat-icon class="feature-icon">check_circle</mat-icon>
+        <span>{{ feature }}</span>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- Tech Stack Card -->
+  <mat-card class="info-card">
+    <h2><mat-icon>code</mat-icon> Tech Stack</h2>
+    <div class="tech-grid">
+      <div class="tech-item" *ngFor="let tech of techStack">
+        <mat-icon [style.color]="tech.color">{{ tech.icon }}</mat-icon>
+        <span>{{ tech.name }}</span>
+      </div>
+    </div>
+  </mat-card>
+
+  <!-- Built By Card -->
+  <mat-card class="info-card built-by">
+    <mat-icon class="built-icon">person</mat-icon>
+    <h2>Built by Sanidhya</h2>
+    <p>Developed as a full-stack learning project covering Angular,
+       REST APIs, SQL Server, JWT authentication, and more.</p>
+  </mat-card>
+
+</div>
