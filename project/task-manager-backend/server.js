@@ -8,9 +8,7 @@ const taskRoutes = require('./routes/taskRoutes');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors({
-  origin: 'http://localhost:4200'
-}));
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -24,6 +22,6 @@ app.get('/', (req, res) => {
 
 connectDB().then(() => {
   app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on port ${PORT}`);
   });
 });
