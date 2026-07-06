@@ -11,7 +11,7 @@ import { NotFound } from './pages/not-found/not-found';
 export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: Login },
-  { path: 'resgister', component: Registration },
+  { path: 'register', component: Registration },
   { path: 'dashboard', component: Dashboard, canActivate: [authGuard] },
   { path: 'tasks', component: Tasks, canActivate: [authGuard] },
   { path: 'statistics', component: Statistics, canActivate: [authGuard] },
