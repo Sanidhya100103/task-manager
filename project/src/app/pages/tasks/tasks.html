@@ -67,11 +67,11 @@
   </div>
 
   <!-- Tasks Table -->
-  <table
-    mat-table
-    [dataSource]="tasks"
-    class="mat-elevation-z2 tasks-table"
-    *ngIf="!isLoading">
+  <div class="table-scroll" *ngIf="!isLoading">
+    <table
+      mat-table
+      [dataSource]="tasks"
+      class="mat-elevation-z2 tasks-table">
 
     <!-- Title -->
     <ng-container matColumnDef="title">
@@ -158,7 +158,8 @@
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
 
-  </table>
+    </table>
+  </div>
 
   <!-- Empty State -->
   <p

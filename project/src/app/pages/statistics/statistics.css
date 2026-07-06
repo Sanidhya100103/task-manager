@@ -102,3 +102,8 @@
 .chart-card canvas {
   max-height: 326px;
 }
+@media (max-width: 600px) {
+  .statistics-container {
+    padding: 12px;
+  }
+}

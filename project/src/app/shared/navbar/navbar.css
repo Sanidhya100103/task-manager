@@ -20,3 +20,27 @@ a {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 4px;
 }
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.1rem;
+    margin-right: 8px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .mobile-nav-toggle {
+    display: inline-flex;
+  }
+}

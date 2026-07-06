@@ -2,22 +2,55 @@
   <span class="logo">TaskManager</span>
   <span class="spacer"></span>
 
-  <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
-    <mat-icon>dashboard</mat-icon> Dashboard
-  </a>
-  <a mat-button routerLink="/tasks" routerLinkActive="active-link">
-    <mat-icon>checklist</mat-icon> Tasks
-  </a>
-  <a mat-button routerLink="/statistics" routerLinkActive="active-link">
-    <mat-icon>bar_chart</mat-icon> Statistics
-  </a>
-  <a mat-button routerLink="/profile" routerLinkActive="active-link">
-    <mat-icon>person</mat-icon> Profile
-  </a>
-  <a mat-button routerLink="/about" routerLinkActive="active-link">
-    <mat-icon>info</mat-icon> About
-  </a>
-  <button mat-button (click)="logout()">
-  <mat-icon>logout</mat-icon> Logout
-</button>
+  <!-- Desktop nav: hidden on small screens via CSS -->
+  <div class="desktop-nav">
+    <a mat-button routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </a>
+    <a mat-button routerLink="/tasks" routerLinkActive="active-link">
+      <mat-icon>checklist</mat-icon> Tasks
+    </a>
+    <a mat-button routerLink="/statistics" routerLinkActive="active-link">
+      <mat-icon>bar_chart</mat-icon> Statistics
+    </a>
+    <a mat-button routerLink="/profile" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon> Profile
+    </a>
+    <a mat-button routerLink="/about" routerLinkActive="active-link">
+      <mat-icon>info</mat-icon> About
+    </a>
+    <button mat-button (click)="logout()">
+      <mat-icon>logout</mat-icon> Logout
+    </button>
+  </div>
+
+  <!-- Mobile nav: hamburger, hidden on larger screens via CSS -->
+  <button
+    mat-icon-button
+    class="mobile-nav-toggle"
+    [matMenuTriggerFor]="mobileMenu"
+    aria-label="Open menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+
+  <mat-menu #mobileMenu="matMenu">
+    <a mat-menu-item routerLink="/dashboard" routerLinkActive="active-link">
+      <mat-icon>dashboard</mat-icon> Dashboard
+    </a>
+    <a mat-menu-item routerLink="/tasks" routerLinkActive="active-link">
+      <mat-icon>checklist</mat-icon> Tasks
+    </a>
+    <a mat-menu-item routerLink="/statistics" routerLinkActive="active-link">
+      <mat-icon>bar_chart</mat-icon> Statistics
+    </a>
+    <a mat-menu-item routerLink="/profile" routerLinkActive="active-link">
+      <mat-icon>person</mat-icon> Profile
+    </a>
+    <a mat-menu-item routerLink="/about" routerLinkActive="active-link">
+      <mat-icon>info</mat-icon> About
+    </a>
+    <button mat-menu-item (click)="logout()">
+      <mat-icon>logout</mat-icon> Logout
+    </button>
+  </mat-menu>
 </mat-toolbar>
